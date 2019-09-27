@@ -22,7 +22,7 @@ The user may then click the "DEVOUR" button generated next to each burger to mov
 ## Screenshots
 
 Schema as directed and unwanted ghost columns (createdAt, updatedAt):
-![Bug1]()
+![Bug1](https://github.com/damicose/Burger/blob/master/public/assets/img/Unwanted%20Columns.jpg?raw=true)
 
 ## Technologies
 
