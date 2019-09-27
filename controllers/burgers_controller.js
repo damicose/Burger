@@ -20,7 +20,7 @@ module.exports = function (app) {
     // Routing for posting
     app.post("/api/v1/burgers", function (req, res) {
         db.Todo.create({
-            burger_name: req.body.text,
+            burger_name: req.body.burger_name,
             devoured: false
         }).then(function (dbBurger) {
             // We have access to the burgers as an argument inside of the callback function

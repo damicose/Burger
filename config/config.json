@@ -22,7 +22,7 @@
     "database": "burger_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
-    // jaws_DB thing here
+    "operatorsAliases": false,
+    "use_env_variable": "JAWSDB_URL"
   }
 }

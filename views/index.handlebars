@@ -1,37 +1,28 @@
-From Sec 14-11
+{{!-- From Sec 14-11 --}}
 
-<h1>Quotes App</h1>
-
-<p>Manage quotes with this app</p>
+<h1>EAT DA BURGER</h1>
 
 <!-- Pass in data from server.js -->
 <ul>
-  {{#each quotes}}
+  {{#each burgers}}
   	<li>
-  		<p><span class="label">ID:</span> {{this.id}}</p>
-      <p><span class="label">Quote:</span> {{this.quote}}</p>
-      <p><span class="label">Author:</span> {{this.author}}</p>
+  		<p><span class="label">BURGER Name</span> {{this.burger_name}}</p>
 
-      <button data-id="{{this.id}}" class="delquote">Delete</button>
+      <button data-id="{{this.id}}" class="eatburger">DEVOUR</button>
 
-      <a href="/{{this.id}}">Update this quote</a>
+      <a href="/{{this.id}}">EAT DA BURGER?</a>
   	</li>
   {{/each}}
 </ul>
 
-<h2>Add a Quote</h2>
+<h2>Add A BURGER</h2>
 
 <form class="create-form">
 
   <div class="form-group">
-    <label for="auth">Author:</label>
-    <input type="text" id="auth" name="author">
+    <label for="burgName">Burger Name</label>
+    <input type="text" id="burgName" name="burger">
   </div>
 
-  <div class="form-group">
-    <label for="quo">Quote:</label>
-    <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
-  </div>
-
-  <button type="submit">Add Quote</button>
+  <button id="burgSubmit" type="submit">Add BURGER</button>
 </form>
