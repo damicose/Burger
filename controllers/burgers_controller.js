@@ -1,68 +1,51 @@
+// Attempting to sew together handlebars and sequelize
+
+// Requiring our Burger model
+const db = require("../models");
 
 
-// Serve index.handlebars to the root route.
-app.get("/", function(req, res) {
-    connection.query("SELECT * FROM burgers;", function(err, data) {
-      if (err) {
-        return res.status(500).end();
-      }
-  
-      res.render("index", { burgers: data });
+module.exports = function (app) {
+
+    // Serve default view
+    app.get("/api/v1/burgers", function (req, res) {
+        // findAll returns all entries for a table when used with no options
+        db.Burger.findAll({}).then(function (dbBurger) {
+            // We have access to the burgers as an argument inside of the callback function
+            res.render("index", {
+                burgers: dbBurger
+            });
+        });
     });
-  });
 
-// Create a new movie
-app.post("/api/movies", function(req, res) {
-  connection.query("INSERT INTO movies (movie) VALUES (?)", [req.body.movie], function(err, result) {
-    if (err) {
-      return res.status(500).end();
-    }
+    // Routing for posting
+    app.post("/api/v1/burgers", function (req, res) {
+        db.Todo.create({
+            burger_name: req.body.text,
+            devoured: false
+        }).then(function (dbBurger) {
+            // We have access to the burgers as an argument inside of the callback function
+            res.render("index", {
+                burgers: dbBurger
+            });
+        });
+    });
 
-    // Send back the ID of the new movie
-    res.json({ id: result.insertId });
-    console.log({ id: result.insertId });
-  });
-});
+    // Routing for updating
+    app.put("/api/v1/burgers", function (req, res) {
+        // Update takes in two arguments, an object describing the properties we want to update,
+        // and another "where" object describing the burgers we want to update
+        db.Todo.update({
+            devoured: true
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbBurger) {
+            // We have access to the burgers as an argument inside of the callback function
+            res.render("index", {
+                burgers: dbBurger
+            });
+        });
+    });
 
-// Retrieve all movies
-app.get("/api/movies", function(req, res) {
-  connection.query("SELECT * FROM movies;", function(err, data) {
-    if (err) {
-      return res.status(500).end();
-    }
-
-    res.json(data);
-  });
-});
-
-// Update a movie
-app.put("/api/movies/:id", function(req, res) {
-  connection.query("UPDATE movies SET movie = ? WHERE id = ?", [req.body.movie, req.params.id], function(err, result) {
-    if (err) {
-      // If an error occurred, send a generic server failure
-      return res.status(500).end();
-    }
-    else if (result.changedRows === 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    }
-    res.status(200).end();
-
-  });
-});
-
-// Delete a movie
-app.delete("/api/movies/:id", function(req, res) {
-  connection.query("DELETE FROM movies WHERE id = ?", [req.params.id], function(err, result) {
-    if (err) {
-      // If an error occurred, send a generic server failure
-      return res.status(500).end();
-    }
-    else if (result.affectedRows === 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    }
-    res.status(200).end();
-
-  });
-});
+};
