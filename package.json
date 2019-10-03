@@ -1,10 +1,11 @@
 {
   "name": "burger",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Function This app is designed to present a list of burgers that are submitted by the user (and/or seeded) which can be virtually devoured.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "express-handlebars": "^3.1.0",
     "mysql": "^2.17.1",
     "mysql2": "^1.7.0",
+    "npm": "^6.11.3",
     "sequelize": "^5.19.0"
   },
   "devDependencies": {
