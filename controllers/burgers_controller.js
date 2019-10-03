@@ -7,7 +7,7 @@ const db = require("../models");
 module.exports = function (app) {
 
     // Serve default view
-    app.get("/api/v1/burgers", function (req, res) {
+    app.get("/", function (req, res) {
         // findAll returns all entries for a table when used with no options
         db.Burger.findAll({}).then(function (dbBurger) {
             // We have access to the burgers as an argument inside of the callback function
