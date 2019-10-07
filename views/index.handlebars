@@ -1,28 +1,40 @@
 {{!-- From Sec 14-11 --}}
 
-<h1>EAT DA BURGER</h1>
-
-<!-- Pass in data from server.js -->
-<ul>
-  {{#each burgers}}
-  	<li>
-  		<p><span class="label">BURGER Name</span> {{this.burger_name}}</p>
-
-      <button data-id="{{this.id}}" class="eatburger">DEVOUR</button>
-
-      <a href="/{{this.id}}">EAT DA BURGER?</a>
-  	</li>
-  {{/each}}
-</ul>
-
-<h2>Add A BURGER</h2>
-
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="burgName">Burger Name</label>
-    <input type="text" id="burgName" name="burger">
+<div class="jumbotron">
+  <div class="container">
+    <h1>EAT DA BURGER</h1>
+    <hr><br>
   </div>
+</div>
+<!-- Pass in data from server.js -->
+<div class="container">
+  <ul>
+    {{#each burgers}}
+    <li>
+      <p><b><span class="label">BURGER Name: </span></b> {{this.burger_name}}</p>
 
-  <button id="burgSubmit" type="submit">Add BURGER</button>
+      <button id="{{this.id}}" class="eatburger">DEVOUR</button>
+{{!-- What are the buttons and A-links doing?? Useless and redundant bb --}}
+      {{!-- <a href="/{{this.id}}">EAT DA BURGER?</a> --}}
+      {{!-- Bootstrap button example below for rework reference --}}
+      {{!-- <a href="" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Primary link</a> --}}
+
+      <hr>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+<hr>
+<div class="container">
+  <h2>Add A BURGER</h2>
+
+  <form class="create-form">
+
+    <div class="form-group">
+      <label for="burgName">BURGER Name: </label>
+      <input type="text" id="burgName" name="burger">
+    </div>
+
+    <button id="burgSubmit" type="submit">Add BURGER</button>
+</div>
 </form>
