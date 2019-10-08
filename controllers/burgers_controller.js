@@ -17,6 +17,7 @@ module.exports = function (app) {
         });
     });
 
+    // Serve json output of db
     app.get("/api/v1/burgers", function (req, res) {
         // findAll returns all entries for a table when used with no options
         db.Burger.findAll({}).then(function (dbBurger) {
@@ -26,7 +27,7 @@ module.exports = function (app) {
     });
 
     // Routing for posting
-    app.post("/", function (req, res) {
+    app.post("/api/v1/burgers", function (req, res) {
         db.Burger.create({
             burger_name: req.body.burger_name,
             devoured: false
@@ -39,7 +40,7 @@ module.exports = function (app) {
     });
 
     // Routing for updating
-    app.put("/", function (req, res) {
+    app.put("/api/v1/burgers", function (req, res) {
         // Update takes in two arguments, an object describing the properties we want to update,
         // and another "where" object describing the burgers we want to update
         db.Burger.update({

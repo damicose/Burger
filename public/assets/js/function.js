@@ -35,7 +35,7 @@ $(document).ready(function () {
                 devoured: true
             }, {
                 where: {
-                    id: req.body.id
+                    id: req.body.id 
                 }
             }).then(function (dbBurger) {
                 // We have access to the burgers as an argument inside of the callback function
@@ -44,6 +44,7 @@ $(document).ready(function () {
                 });
             });
         });
+        console.log(req.body.id);
         serveBurgs();
     };
 
